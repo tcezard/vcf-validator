@@ -146,3 +146,15 @@ script:
     if [[ $TRAVIS_OS_NAME == "osx" ]]; then
       otool -L bin/vcf_validator
     fi
+
+deploy:
+  provider: releases
+  api_key:
+    secure: bUBg9U1QvPmRS+xMlv2Nm3JNi6SqFh8PDfkz2hAH978gp6MEgtNKG/P84gWoTSnUhO/FfblBBESbVgTslzHMy1G5JGrc8hkm29Wc19wq8oxQyTeK1l3GX8BXPbmGjY7a2ybidcMgC+fvK3rKDf0db3QBM/3BF8sezh4UoCkuq8i9u1NyGAyioeSZzVHHpIDVEtHjr9MqAwDtPFE/2HvIInovfFYXJhTaQTZTU8Jc6ITfxY5q+HtvZ+2h4bZiIs2BgBP2KJY88QMXIYkxKKsTMrFeB9Ysijl2Bb+i55tfe6NBVkYC8k8/h/Sun5XhfhlUV1A0FMRkerOCvVFsV1Il0B/Ldjt0Cdw2l3/eezM3yZhFX+QUfZJSq1WwemXQQjlL4DmtjcP84WP6xk3cYZfEN0A/BXcdHP1l83vQXT3xaQ0dwLzA/6igOE6sHODhbeuBxl25psypen56jqVhj6erU/bM3ZqW+o8hOuMnVi2JeJ0cEGfU5Dgo8oxIHdSzks6kpxRIDMF9ciVOKNYA0T8H4R812xu4St2ijPQVz+EOcE8s1rHbA/8XPf2a9fdWkndY8tUq0lV+senf5CxLBof9t4442z7eEtPhJm0tcaoHX6gKhW8gGYlvqX0zykPE1qa3UQ2Eec6NLBKErVThEgblsuv6wG/VwfSV7SuIjAw/6sg=
+  file:
+    - bin/vcf_validator
+    - bin/vcf_debugulator
+  skip_cleanup:true
+  on:
+    repo: EBIvariation/vcf-validator
+    branch: release/0.9
