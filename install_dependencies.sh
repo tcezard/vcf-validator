@@ -110,7 +110,13 @@ then
   echo "installing libbz2"
   wget http://archive.ubuntu.com/ubuntu/pool/main/b/bzip2/bzip2_1.0.6.orig.tar.bz2 -O ./libbz2.tar.bz2
   tar jxf ./libbz2.tar.bz2
-  cd bzip2-1.0.6 && make
+  cd bzip2-1.0.6
+  if [[ -z "${CC}" ]]; then
+    make CC=$CC
+  else
+    make
+  fi
+
   cd ..
 
   echo "installing libz"
