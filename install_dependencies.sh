@@ -111,12 +111,11 @@ then
   wget http://archive.ubuntu.com/ubuntu/pool/main/b/bzip2/bzip2_1.0.6.orig.tar.bz2 -O ./libbz2.tar.bz2
   tar jxf ./libbz2.tar.bz2
   cd bzip2-1.0.6
-  if [[ -z "${CC}" ]]; then
-    echo "make with $CC"
-    make CC="${CC}"
-  else
-    echo "make without CC=$CC"
+  if [[ -z "${CC}" ]]
+  then
     make
+  else
+    make CC="${CC}"
   fi
 
   cd ..
