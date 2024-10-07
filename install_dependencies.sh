@@ -183,9 +183,11 @@ then
   # Documentation on specifying zlib and bzip2: https://boostorg.github.io/build/manual/master/index.html#bbv2.reference.tools.libraries.zlib
   echo "
 using zlib : 1.2.11 : <include>${dependencies_dir_abs_path}/zlib-1.2.11 <search>${dependencies_dir_abs_path}/ ;
-using bzip2 : 1.0.6 : <include>${dependencies_dir_abs_path}/bzip2-1.0.6 <search>${dependencies_dir_abs_path}/ ;
-" > tools/build/src/user-config.jam
-
+using bzip2 : 1.0.6 : <include>${dependencies_dir_abs_path}/bzip2-1.0.6 <search>${dependencies_dir_abs_path}/ ;" > tools/build/src/user-config.jam
+  if [[ -n "${CXX}" ]]
+    then
+      echo "using gcc :  : ${CXX}" >> tools/build/src/user-config.jam
+  fi
   ./bootstrap.sh --with-libraries=filesystem,iostreams,log,program_options,regex && ./b2 link=static
   cd ..
 fi
